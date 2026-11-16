@@ -15,11 +15,13 @@ EMPLOYEE_NOT_FOUND_ERROR_MESSAGE = "No Employee found for the given employee fie
 EMPLOYEE_INACTIVE_ERROR_MESSAGE = "Transactions cannot be created for an Inactive Employee"
 DUPLICATE_EMPLOYEE_CHECKIN_ERROR_MESSAGE = "This employee already has a log with the same timestamp"
 allowlisted_errors = [EMPLOYEE_NOT_FOUND_ERROR_MESSAGE, EMPLOYEE_INACTIVE_ERROR_MESSAGE, DUPLICATE_EMPLOYEE_CHECKIN_ERROR_MESSAGE]
+allowlisted_errors_ar = ["لم يتم العثور على موظف لقيمة حقل الموظف المحدد", "لا يمكن إنشاء معاملات لموظف غير نشط", "هذا الموظف لديه بالفعل سجل بنفس الطابع الزمني"]
 
 if hasattr(config,'allowed_exceptions'):
     allowlisted_errors_temp = []
     for error_number in config.allowed_exceptions:
         allowlisted_errors_temp.append(allowlisted_errors[error_number-1])
+        allowlisted_errors_temp.append(allowlisted_errors_ar[error_number-1])
     allowlisted_errors = allowlisted_errors_temp
 
 device_punch_values_IN = getattr(config, 'device_punch_values_IN', [0,4])
